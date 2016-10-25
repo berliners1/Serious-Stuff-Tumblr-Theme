@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{Title}{block:PostSummary} &mdash; {PostSummary}{/block:PostSummary}</title>
+  {block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
+  
+  <link rel="apple-touch-icon" href="{PortraitURL-128}">
+  <link rel="shortcut icon" href="{Favicon}">
+  <link rel="canonical" href="{block:IndexPage}{BlogURL}{/block:IndexPage}{block:PermalinkPage}{Permalink}{/block:PermalinkPage}">
+  <link rel="alternate" type="application/rss+xml" href="{RSS}">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="http://static.tumblr.com/otgjw4w/B3Rofkzb0/styles.css">
+  
+  <!-- Custom Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet">
+  
+  {block:Hidden} 
+    <!-- Fonts -->
+    <meta name="font:Header Font" content="Noto Sans, Verdana, sans-serif"/>
+    <meta name="if:Default Header Font" content="1">
+    
+    <meta name="font:Body Font" content="Noto Sans, Verdana, sans-serif"/>
+    <meta name="if:Default Body Font" content="1">
+    
+    <meta name="font:Typed Font" content="Droid Sans, Courier New, monospace"/>
+    <meta name="if:Default Typed Font" content="1">
+    
+    
+    <!-- Colors -->
+    <meta name="color:Header Background Color" content="rgb(44,44,56)"/> <!-- Header background -->
+    <meta name="color:Header Text Color" content="rgb(244,244,244)"/> <!-- Header text -->
+    <meta name="color:Avatar Border Color" content="rgb(255,255,255)"/> <!-- Avatar border -->
+    
+    <!-- Search -->
+    <meta name="if:Enable Search" content="0"/>
+  {/block:Hidden}
+  
+  
+  <style type="text/css">
+  
+  /*--Tumblr Default Fonts--*/
+  {block:IfDefaultHeaderFont}
+    h1{
+        font-family:"Noto Sans","Verdana",sans-serif !important;
+    }
+  {/block:IfDefaultHeaderFont}
+  
+  {block:IfDefaultBodyFont}
+    body{
+        font-family:"Noto Sans","Verdana",sans-serif !important;
+    }
+  {/block:IfDefaultBodyFont}
+  
+  {block:IfDefaultTypedFont}
+    blockquote, .chat, .asker-question, .replies{
+        font-family: "Droid Sans Mono","Courier New",monospace !important;
+    }
+  {/block:IfDefaultTypedFont}
+  
+  
+  /*--Tumblr custom fonts (only works when respective default fonts are disabled--*/
+  h1{
+      font-family:{font:Header Font};
+  }
+  body{
+      font-family:{font:Body Font};
+  }
+  blockquote, .chat, .asker-question, .replies{
+      font-family:{font:Typed Font};
+  }
+  
+  
+  /*--Tumblr Custom Colors--*/
+  .header{
+    background-color: {color:Header Background Color};
+  }
+  .header h1{
+    text-shadow:2px 2px {color:Header Background Color};
+  }
+  .header, .header a{
+    color: {color:Header Text Color};
+  }
+  @media screen and (min-width:80rem){
+    .header li{
+      box-shadow:inset 2px 0px {color:Header Text Color};
+    }
+  }
+  .header hr{
+    background-color:{color:Header Text Color};
+    border-top-color:{color:Header Text Color};
+  }
+  .avatar-circle, .avatar-square{
+      border-color:{color:Avatar Border Color};
+  }
+  form#search input[type="search"]{
+      background-color: {color:Header Text Color};
+  }
+  
+  {CustomCSS}
+  </style>
+
+</head>
+
+<body>
+
+  <section class="header">
+
+    {block:ShowHeaderImage}
+      <span class="header-img-space"></span>
+      <div class="header-background">
+        <img class="header-img" src="{HeaderImage}">
+      </div>
+    {/block:ShowHeaderImage}
+
+    <div class="header-content-container">
+      {block:ShowAvatar}<img class="avatar-img avatar-{AvatarShape}" src="{PortraitURL-128}">{/block:ShowAvatar}
+      
+      {block:ShowHeaderImage} <!-- To have spacing given by avatar, while header image is enabled, even if avatar isn't enabled by user -->
+        {block:HideAvatar} <img class="avatar-img avatar-{AvatarShape} no-img" src="{PortraitURL-128}"> {/block:HideAvatar}
+      {/block:ShowHeaderImage}
+      
+      {block:ShowTitle}<h1 id="logo"><a href="{BlogURL}">{Title}</a></h1>{/block:ShowTitle}
+      <div class="description-container">
+        {block:ShowDescription}{block:Description}<div class="description">{Description}</div>{/block:Description}{/block:ShowDescription}
+      </div>
+      
+    {block:IfEnableSearch}
+        <form id="search" action="/search" method="get">
+            <input role="textbox" type="search" placeholder="{lang:Search} {lang:Tags}" name="q" value="{SearchQuery}">
+            <input role="button" type="submit" value="{lang:Search}">
+        </form>
+    {/block:IfEnableSearch}
+    
+      
+      <hr class="header-hr" />
+      
+      <ul class="nav">
+        <li><a href="/archive">{lang:Archive}</a></li>
+            {block:Likes} <li><a href="https://www.tumblr.com/liked/by/bakoniz0r">Likes</a></li> {/block:Likes}
+            
+            {block:AskEnabled}<li><a href="/ask">{AskLabel}</a></li>{/block:AskEnabled}
+            
+            {block:SubmissionsEnabled} <li><a href="https://bakoniz0r.tumblr.com/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
+            
+            {block:HasPages}{block:Pages}<li><a href="{URL}">{Label}</a></li>{/block:Pages}{/block:HasPages}
+            
+            {block:IfShowRSS}<li><a href="{RSS}">{lang:RSS}</a></li>{/block:IfShowRSS}
+        </ul>
+      
+    </div> <!-- end header-contnet-container -->
+  </section> <!-- end section .header -->
+
+
+  <section class="maincontent">
+  
+    {block:SearchPage}
+        <div class="result">
+            <p>{lang:Found SearchResultCount results for SearchQuery 2}</p>
+            {block:NoSearchResults}<p>{lang:No results for SearchQuery 2}</p>{/block:NoSearchResults}
+        </div>
+    {/block:SearchPage}
+  
+    {block:TagPage}
+        <section class="Section Section--Breadcrumb Container">
+        	<h1 class="Breadcrumb">{Tag}</h1>
+        </section>
+    {/block:TagPage}
+  
+    {block:Posts}
+      <article class="post post-container {PostType} {TagsAsClasses}" id="{PostID}">
+
+        <!-- TEXT POST -->
+        {block:Text}
+
+          {block:Title}<h2><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+          
+          {block:Date}
+            {block:NewDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:NewDayDate}
+            {block:SameDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:SameDayDate}
+          {/block:Date}
+          
+          {block:Body}
+          <div class="body-text">
+            {Body}
+          </div>
+          {/block:Body}
+          
+        {/block:Text}
+        
+        
+        <!-- PHOTO POST -->
+        {block:Photo}
+        
+          {block:Date}
+            {block:NewDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:NewDayDate}
+            {block:SameDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:SameDayDate}
+          {/block:Date}
+          
+          <figure class="{block:HighRes}high-res{/block:HighRes}{block:Caption} with-caption{/block:Caption}" data-photo-width="{PhotoWidth-HighRes}">
+            {LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" width="{PhotoWidth-HighRes}" height="{PhotoHeight-HighRes}">{LinkCloseTag}
+            {block:Caption}<figcaption class="caption">{Caption}</figcaption>{/block:Caption}
+          </figure>
+
+        {/block:Photo}
+        
+        
+        <!-- PHOTOSET POST -->
+        {block:Photoset}
+          <figure{block:Caption} class="with-caption"{/block:Caption}>
+          
+              {block:Date}
+                {block:NewDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:NewDayDate}
+                {block:SameDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:SameDayDate}
+              {/block:Date}
+          
+            <div class="photoset-photos">
+              {block:Photos}
+                <div class="tile">
+                  <div class="img-container">
+                    <a href="{PhotoURL-HighRes}">
+                      <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" width="{PhotoWidth-HighRes}" height="{PhotoHeight-HighRes}">
+                    </a>
+                  </div>
+                </div>
+                {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+              {/block:Photos}
+            </div>
+
+            {block:Caption}<figcaption class="caption">{Caption}</figcaption>{/block:Caption}
+          </figure>
+        {/block:Photoset}
+        
+        
+        <!-- PANORAMA POST -->
+        {block:Panorama}
+          <figure{block:Caption} class="with-caption"{/block:Caption}>
+            {LinkOpenTag}<img src="{PhotoURL-Panorama}" width="{PhotoWidth-Panorama}" height="{PhotoHeight-Panorama}" alt="{PhotoAlt}" />{LinkCloseTag}
+            {block:Caption}<figcaption class="caption">{Caption}</figcaption>{/block:Caption}
+          </figure>
+        {/block:Panorama}
+          
+          
+        <!-- QUOTE POST -->
+        {block:Quote}
+        
+          {block:Date}
+            {block:NewDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:NewDayDate}
+            {block:SameDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:SameDayDate}
+          {/block:Date}
+      
+          <blockquote class="words {Length}">&#8220;{Quote}&#8221;</blockquote>
+          {block:Source}<span class="source">{Source}</span>{/block:Source}
+
+        {/block:Quote}
+          
+          
+        <!-- LINK POST -->
+        {block:Link}
+        
+          {block:Date}
+            {block:NewDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:NewDayDate}
+            {block:SameDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:SameDayDate}
+          {/block:Date}
+          <span>{Host}</span>
+          <h2><a href="{URL}" {Target}>{Name}</a></h2>
+          {block:Description}<div class="caption">{Description}</div>{/block:Description}
+            
+        {/block:Link}
+          
+          
+        <!-- CHAT POST -->
+        {block:Chat}
+        
+          {block:Date}
+            {block:NewDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:NewDayDate}
+            {block:SameDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:SameDayDate}
+          {/block:Date}
+          
+          {block:Title}<h2>{Title}</h2>{/block:Title}
+          <ul class="conversation">
+            {block:Lines}
+            <li class="line {Alt}">
+              {block:Label}<span class="person">{Label}</span>{/block:Label}
+              <span class="person-said">{Line}</span>
+            </li>
+            {/block:Lines}
+          </ul>
+
+        {/block:Chat}
+          
+
+        <!-- QUESTION POST -->
+        {block:Answer}
+        
+          {block:Date}
+            {block:NewDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:NewDayDate}
+            {block:SameDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:SameDayDate}
+          {/block:Date}
+          
+          <section class="question">
+            <img src="{AskerPortraitURL-48}">
+            <div class="asker">{lang:Asker asked}</div>
+            <div class="asker-question">
+              {Question}
+            </div>
+          </section>
+          
+          {block:Answerer}
+            <section class="answerer">
+              <img src="{AnswererPortraitURL-48}">
+              <strong><span>{Answerer}</span></strong>
+              <div class="replies">
+                {Answer}
+              </div>
+            </section>
+          {/block:Answerer}
+          
+          <span class="responder-name">{Answerer}</span>
+          <div class="replies"> {Replies}</div>
+
+        {/block:Answer}
+          
+          
+          
+        <!-- AUDIO POST -->
+        {block:Audio}
+        
+          {block:Date}
+            {block:NewDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:NewDayDate}
+            {block:SameDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:SameDayDate}
+          {/block:Date}
+        
+          {block:AlbumArt}<img src="{AlbumArtURL}" alt="">{/block:AlbumArt}
+          <div class="audio-player">
+            {block:AudioEmbed}
+              {AudioEmbed color="white"}
+            {/block:AudioEmbed}
+            {block:AudioPlayer}{AudioPlayerBlack}{/block:AudioPlayer}
+          </div>
+          {block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+      
+        {/block:Audio}
+          
+          
+        <!-- VIDEO POST -->
+        {block:Video}
+        
+          {block:Date}
+            {block:NewDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:NewDayDate}
+            {block:SameDayDate}<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>{/block:SameDayDate}
+          {/block:Date}
+        
+          <figure{block:Caption} class="with-caption"{/block:Caption}>
+            <div class="video-player">
+              {Video-700}
+            </div>
+            
+            {block:Caption}
+              {block:RebloggedFrom} <figcaption class="caption is-reblog">{Caption}</figcaption> {/block:RebloggedFrom}
+              {block:NotReblog} <figcaption class="caption not-reblog">{Caption}</figcaption> {/block:NotReblog}
+            {/block:Caption}
+          </figure>
+          
+        {/block:Video}
+          
+          
+        <!-- OTHER/ENDMATTER -->
+        {block:HasTags}
+          <p class="tags-styles"> 
+            {block:Tags}
+              <a href="{TagURL}">#{Tag}</a>
+            {/block:Tags}
+          </p>
+        {/block:HasTags}
+
+        <hr class="endpost_hr" />
+        {LikeButton color="grey"}
+        {ReblogButton color="grey"}
+        <p class="notecount">
+          {block:NoteCount}
+            <a href="{Permalink}#notes">{NoteCountWithLabel}</a>
+          {/block:NoteCount}
+        </p>
+
+        <div id="notes">{PostNotes}</div>
+        
+      </article>
+          
+      {/block:Posts}
+  
+      {block:Pagination}
+
+        <ul class="prev-next-pg content infinite {select:Scroll Style}">
+          {block:PreviousPage}
+              <li class="new-stuff">
+                <a href="{PreviousPage}">
+                  <svg width="25" height="40"> <!-- right arrow -->
+                    <path d="M25 0 L15 0 L0 20 L15 40 L25 40 L10 20 Z"></path>
+                  </svg>
+                </a>
+              </li>
+          {/block:PreviousPage}
+          
+          {block:NextPage}
+              <li class="earlier-stuff">
+                <a href="{NextPage}">
+                  <svg width="25" height="40"> <!-- left arrow -->
+                    <path d="M0 0 L10 0 L25 20 L10 40 L0 40 L15 20 Z"></path>
+                  </svg>
+                </a>
+              </li>
+          {/block:NextPage}
+        </ul>
+
+      {/block:Pagination}
+
+    </section>
+    
+  </body>
+</html>

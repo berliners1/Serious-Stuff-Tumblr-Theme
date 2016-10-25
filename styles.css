@@ -1,0 +1,953 @@
+/**
+Serious Stuff Theme
+*/
+
+/*TABLE OF CONTENTS*/
+/*
+
+This theme is coded from a mobile-first perspective.
+Explanation: http://zurb.com/word/mobile-first
+
+1rem = 16px
+
+--0rem width and up - base styles, emphasis mobile, emphasis portrait--
+	(A000) Initial CSS
+	(A100) Post-specific stylings
+		(A110) Text
+		(A120) Photo
+		(A130) Quote
+		(A140) Link
+		(A150) Chat
+		(A160) Question/answer
+		(A170) Audio
+		(A180) Video
+		(A190) Misc/Endmatter
+	(A200) Post Notes CSS
+	(A300) Next/Previous buttons CSS
+	(A400) Main CSS
+		(A410) Header
+		(A420) Maincontent
+		(A430) Search CSS
+
+--0rem width and up - mobile, landscape-only--
+	(B200) Post-specific stylings
+		(B120) Text
+		(B180) Video
+		(B190) Misc/endmatter
+	(B400) Main CSS
+		(B410) Header
+		(B420) Maincontent
+
+--47rem width and up - tablets, emphasis portrait--
+	(C200) Post-specific stylings
+		(C120) Text
+		(C180) Video
+		(C190) Misc/endmatter
+	(C400) Main CSS
+		(C410) Header
+		(C420) Maincontent
+
+--47rem width and up - tablets, landscape-only--
+	(D200) Post-specific stylings
+		(D120) Text
+		(D180) Video
+		(D190) Misc/endmatter
+	(D400) Main CSS
+		(D410) Header
+		(D420) Maincontent
+
+--80rem width and up - desktops, laptops, large tablets--
+	(E200) Post-specific stylings
+		(E120) Text
+		(E180) Video
+		(E190) Misc/endmatter
+	(E400) Main CSS
+		(E410) Header
+		(E420) Maincontent
+		(E430) Search CSS
+
+--For small laptop screens, so nothing in the header overflows downward
+(SMOL-100)--
+
+--IE-only code (IE-100)--
+
+*/
+
+/*0rem width and up - base styles, emphasis mobile, emphasis portrait*/
+@media screen and (min-width:0rem){
+
+	/*Initial CSS (A000)*/
+	*{
+		margin:0;
+		padding:0;
+	}
+	body{
+		height:100vh;
+		font-family:"Noto Sans","Verdana",sans-serif;
+		background-color:rgb(240,240,244);
+	}
+	h2{
+		color:rgb(44,44,56);
+	}
+	p{
+		font-size:13pt;
+		margin-bottom:0.9rem;
+		line-height:1.51;
+	}
+	.header-content-container a{
+		color:inherit;
+		text-decoration:none;
+	}
+
+	ol{
+		counter-reset:item;
+		margin-left:20px;
+	}
+	ol li{
+		list-style-type:decimal;
+	}
+	ol > li{ /*Nesting ol's isn't a great idea, but this will make it look good most of the time.*/
+		counter-increment:item;
+	}
+	ol ol > li{
+		display:block;
+	}
+	ol ol > li:before{ 
+		content:counters(item,".")". ";
+		margin-left:20px;
+	}
+	ol ol ol > li:before{
+		content:counters(item,".")". ";
+		margin-left:40px;
+	}
+
+	ul{
+		margin-left:20px;
+	}
+	ul li{
+		list-style-type:disc;
+	}
+	ul ul > li{
+		margin-left:20px;
+	}
+	ul ul ul > li{
+		margin-left:40px;
+	}
+	
+	
+	/*Post-specific stylings (A100)*/
+	
+	/*Text (A110)*/
+	.text{
+		border-top:4px solid rgb(87,87,87);
+	}
+	.body-text > ul, .body-text > ol{
+		margin-bottom:1rem;
+	}
+	
+	
+	/*Photo (A120)*/
+	.photo{
+		border-top:4px solid rgb(220,110,83);
+	}
+	img{
+		max-width:100%;
+		height:auto;
+	}
+	.photo figcaption.caption{
+		margin-top:0.4rem;
+	}
+
+	.photoset-photos{
+		display:inline;
+		background-color:rgba(20,20,200,0.04);
+	}
+	.photoset-photos .tile{
+		width:50%;
+		height:40vw;
+		overflow:hidden;
+		display:flex;
+		align-items:center;
+
+		-webkit-transition: opacity .06s linear;
+		-moz-transition: opacity .06s linear;
+		-o-transition: opacity .06s linear;
+		transition: opacity .06s linear;
+	}
+	.photoset-photos .tile:hover{
+		opacity:0.8;
+		-webkit-transition: opacity .10s linear;
+		-moz-transition: opacity .10s linear;
+		-o-transition: opacity .10s linear;
+		transition: opacity .10s linear;
+	}
+	.photoset-photos .tile:nth-child(odd){
+		float:left;
+	}
+	.pgotoset-photos .tile:nth-child(even){
+		float:right;
+	}
+	.img-container{
+		overflow:hidden;
+		display:flex;
+		align-items:center;
+		justify-content:center;
+	}
+	.tile img{
+		max-width:150%;
+	}
+	
+	
+	/*Quote (A130)*/
+	.quote{
+		border-top:4px solid rgb(243,163,67);
+	}
+	blockquote{
+		font-family: "Droid Sans Mono","Courier New",monospace;
+		background-color:white;
+		font-size:13pt;
+		padding:1rem;
+		border-left:2px solid rgb(222,222,224);
+	}
+	.text blockquote{
+		font:inherit;
+	}
+	
+	
+	/*Link (A140)*/
+	.link{
+		border-top:4px solid rgb(103,194,149);
+	}
+	.link h2{
+		margin-bottom:0.3rem;
+		color:rgb(87,100,255);
+		text-decoration:underline;
+	}
+	.link h2 a{
+		font-size:85%;
+	}
+	
+	
+	/*Chat (A150)*/
+	.chat{
+		border-top:4px solid rgb(99,167,209);
+		font-family: "Droid Sans Mono","Courier New",monospace;
+	}
+	.chat li{
+		list-style-type:none;
+		margin-bottom:0.2rem;
+	}
+	.conversation{
+		background-color:rgb(255,255,255);
+		padding:0.8rem;
+	}
+	.person{
+		font-weight:bold;
+	}
+	
+	
+	/*Question/answer (A160)*/
+	.answer{
+		border-top:4px solid cyan;
+	}
+	.asker{
+		font-weight:bold;
+	}
+	.asker-question{
+		padding:0.5rem;
+		margin:0.5rem 0 1rem 0;
+		font-family:"Droid Sans Mono","Courier New",monospace;
+	}
+	.replies{
+		padding:0.5rem;
+		margin-top:0.4rem;
+		font-family:"Droid Sans Mono","Courier New",monospace;
+	}
+	.responder-name{
+		font-weight:bold;
+	}
+	section.question{
+		padding-bottom:0.001rem;
+		margin-bottom:1rem;
+	}
+	section.answerer{
+		margin-bottom:1rem;
+	}
+	section.question img, section.answerer img{
+		display:block;
+	}
+	section.question, section.answerer{
+		background-color:rgba(20,20,200,0.04);
+	}
+	section.question img, section.question .asker, section.answerer img, section.answerer span{
+		padding-left:0.5rem;
+	}
+	section.question img, section.answerer img{
+		padding-top:0.5rem;
+	}
+	
+	
+	/*Audio (A170)*/
+	.audio{
+		border-top:4px solid rgb(176,138,200);
+	}
+	
+	
+	/*Video (A180)*/
+	.video{
+		border-top:4px solid rgb(130,141,149);
+	}
+	#youtube_iframe, .tumblr_video_container iframe, .video-player iframe{
+		font-size:6.125vw;
+		width:16em;
+		height:9em;
+	}
+	.tumblr_video_container{
+        width:initial !important;
+        height:initial !important;
+    }
+    .video-player{
+    	margin-bottom:0.9rem;
+    }
+	
+	
+	/*Misc/endmatter (A190)*/
+	.like_button, .reblog_button{
+		display: inline-block !important;
+		margin-top:1.2rem;
+	}
+	.endpost_hr{
+		background-color:rgb(144,144,144);
+	}
+	iframe{
+		max-width:100%;
+			
+	}
+	.tags-styles{
+		font-size:10pt;
+		margin-bottom:1.3rem;
+	}
+	.tags-styles a{
+		color:rgb(144,144,144);
+		margin-right:0.17rem;
+		margin-left:0.17rem;
+		text-decoration:none;
+	}
+	.tags-styles a:hover{
+		text-decoration:underline;
+	}
+	.avatar-square{
+		border-radius:0.1rem;
+		border:3px solid white;
+	}
+	.avatar-circle{
+		border-radius:100rem;
+		border:4px solid white;
+	}
+
+	
+	figcaption > p:last-child a{
+		color:inherit;
+	}
+	.source > p:last-child{ /*As well as for other posts*/
+		font-size:10pt;
+		color:rgb(144,144,144);
+	}
+	.source > p:last-child a{
+		color:inherit;
+	}
+
+
+	figcaption blockquote{
+		font:inherit;
+		width:inherit;
+	}
+	figcaption.is-reblog > p:first-child{
+		color:rgb(144,144,144);
+	}
+	figcaption a.tumblr_blog{
+		color:rgb(144,144,144);
+	}
+
+	.caption blockquote{
+		font:inherit;
+		margin-bottom:0.9rem;
+	}
+	.caption blockquote p:last-child{
+		margin-bottom:0;
+	}
+
+	.answer_form_container iframe{
+		min-height:9rem;
+	}
+	
+	
+	/*Post Notes CSS (A200)*/
+	/*https://staff.tumblr.com/post/79974741/notes*/
+	#notes{
+		display:block;
+		width:90%;
+		margin:0 auto;
+		background-color:white;
+	}
+	.notecount{
+		float:right;
+		margin-top:0.9rem;
+		font-size:13pt;
+	}
+	ol.notes {
+		padding: 0px;
+		margin: 25px 0px;
+		list-style-type: none;
+		border-bottom: solid 1px #ccc;
+	}
+	ol.notes li.note {
+		border-top: solid 1px #ccc;
+		padding: 10px;
+		list-style-type: none;
+	}
+	ol.notes li.note img.avatar {
+		vertical-align: -4px;
+		margin-right: 10px;
+		width: 16px;
+		height: 16px;
+	}
+	ol.notes li.note span.action {
+		font-weight: bold;
+	}
+	ol.notes li.note .answer_content {
+		font-weight: normal;
+	}
+	ol.notes li.note blockquote {
+		border-color: #eee;
+		padding: 4px 10px;
+		margin: 10px 0px 0px 25px;
+	}
+	ol.notes li.note blockquote a {
+		text-decoration: none;
+	}
+
+	/*next/previous button css (A300)*/
+	.prev-next-pg{
+		padding-left:1rem;
+		padding-right:1rem;
+		margin:1.5rem auto 0 auto;
+	  
+	}
+	.prev-next-pg li{
+		list-style-type:none;
+	}
+	.prev-next-pg li a{
+		text-decoration:none;
+	}
+	.earlier-stuff{
+		float:right;
+		display:inline;
+		margin-right:-1rem;
+	}
+	.new-stuff{
+		text-align:left;
+		display:inline;
+		margin-left:-1rem;
+	}
+	.prev-next-pg svg{
+		color:rgb(44,44,56);
+		fill:currentColor;
+
+		-webkit-transition: .15s ease-in-out;
+		-moz-transition: .15s ease-in-out;
+		-o-transition: .15s ease-in-out;
+		transition: .15s ease-in-out;
+
+		margin-bottom:1.7rem;
+	}
+		
+
+
+
+	/*MAIN CSS (A400)*/
+
+	/*Header (A410)*/
+	.header{
+		background-color:rgb(44,44,56);
+		color:rgb(244,244,244);
+		padding:2rem 1rem 2rem 1rem;
+	}
+	.avatar-img{
+		display:block;
+		margin:0 auto;
+		max-width:23vw;
+		margin-bottom:0.8rem;
+	}
+	.header h1{
+		text-align:center;
+		margin-bottom:0.8rem;
+		font-size:22pt;
+		text-shadow:2px 2px rgb(44,44,56);
+	}
+	.header p{
+		font-size:10pt;
+		line-height:1.56;
+	}
+	.header-hr{
+		margin:1rem auto;
+		border:0;
+		border-top:2px solid white;
+		background-color:white;
+		display:block;
+	}
+	.description-container{
+		width:100%;
+	}
+	.nav{
+		width:100%;
+		margin:0 auto;
+		display:flex;
+		justify-content:space-around;
+		flex-wrap:wrap;
+		margin-top:0.6rem;
+	}
+	.nav li{
+		list-style-type:none;
+		display:inline;
+		text-decoration:underline;
+		color:white;
+		font-weight:bold;
+		margin:0 0 0.8rem 0;
+	}
+	.header-content-container{
+		margin-top:0vh;
+		overflow:auto;
+		position:relative;
+		width:100%;
+	}
+	.header-background{
+		top:0;
+		width:100%; /*make more than 100% on 80rem+*/
+		overflow:hidden;
+		margin-left:-1rem;
+		margin-top:-2rem;
+		margin-bottom:1rem;
+		max-height:15rem;
+		position:absolute;
+	}
+	.header-background .img-bg{
+		width:100%;
+		height:auto;
+	}
+	.no-img{
+        opacity:0;
+        pointer-events:none;
+    }
+    .header-img-space{
+        display:block;
+        height:5rem;
+    }
+
+	/*Maincontent (A420)*/
+	.maincontent{
+		color:rgb(44,44,44);
+		padding:3rem 0.25rem;
+	}
+	.maincontent h2 a{
+		color:inherit;
+		text-decoration:none;
+	}
+	.post-container{
+		margin:0rem auto 2rem auto;
+		padding:1rem;
+		background-color:rgb(255,255,255);
+		border-radius:0.2rem;
+		box-shadow:1px 1px 14px -7px rgb(44,44,56);
+	}
+
+	/*Search CSS (A430)*/
+	form#search{
+		margin:0.7rem auto 0 auto;
+		width:100%; /*for all but desktop*/
+	}
+	form#search input[type="search"]{
+		display:block;
+		margin:0 auto; /*for all but desktop*/
+		height:2rem;
+		width:12rem;
+		border:0;
+		font-size:13pt;
+		background-color:rgb(244,244,244);
+		text-align:center;
+	}
+	form#search input[type="submit"]{
+		display:none;
+	}
+
+	.result p{
+		text-align:center;
+		margin-top:2rem;
+		font-size:14pt;
+	}
+	.result p span{
+		font-weight:bold;	
+	}
+	.result p span::before, .result p span::after{
+		content:"\""
+	}
+
+	.Section--Breadcrumb h1::before{
+		content:"Tag: ";
+	}
+	.Section--Breadcrumb h1{
+		text-align:center;
+		margin-top:2rem;
+	}
+
+}
+/*0rem and up - base styles, emphasis mobile, emphasis portrait*/
+
+
+/*0rem width and up - mobile, landscape only*/
+@media screen and (min-width:0rem) and (orientation:landscape){
+
+	/*Post-specific Stylings (B100)*/
+
+	/*Photo (B120*/
+	.photoset-photos .tile{
+		width:50%;
+		height:30vw;
+	}
+
+	/*Video (B180)*/
+	#youtube_iframe, .tumblr_video_container iframe, .video-player iframe{
+		font-size:4.6875vw;
+	}
+
+	/*Next/previous button css (B190)*/
+	.prev-next-pg{
+		width:75%;
+	}
+
+	/*MAIN CSS (B400)*/
+
+	/*Header (B410)*/
+	.header{
+		padding:1.5rem 1rem 1.5rem 1rem;
+	}
+	.avatar-img{
+		max-width:14vw;
+		margin-bottom:0.6rem;
+	}
+	.header h1{
+		margin-bottom:0.6rem;
+		font-size:23pt;
+	}
+	.header-hr{
+		width:75%;
+	}
+	.description-container{
+		width:75%;
+		margin:0 auto;
+	}
+	.nav{
+		width:75%;
+
+	}
+	.nav li{
+		margin:0 0 0.8rem 0;
+	}
+	.header-background{
+		max-height:13rem;
+	}
+
+
+	/*Maincontent (B420)*/
+	.maincontent{
+		padding:3rem 1.5rem;
+	}
+	.post-container{
+		width:75%;
+	}
+}
+/*End 0rem and up - mobile, landscape only*/
+
+
+/*47rem width and up - tablets, emphasis portrait*/
+@media screen and (min-width:47rem){
+
+	/*Post-specific stylings (C100*/
+
+	/*Photo (C120)*/
+	.photoset-photos .tile{
+		width:50%;
+		height:35vw;
+	}
+
+	/*Video (C180)*/
+	#youtube_iframe, .tumblr_video_container iframe, .video-player iframe{
+		font-size:5.3125vw;
+	}
+
+	/*Next/previous button css (C190)*/
+	.prev-next-pg{
+		width:85%;
+	}
+
+	/*MAIN CSS (C400)*/
+
+	/*Header (C410)*/
+	.header{
+		padding:2rem 1rem 1rem 1rem;
+	}
+	.avatar-img{
+		max-width:17vw;
+		margin-bottom:0.6rem;
+	}
+	.header h1{
+		margin-bottom:0.6rem;
+		font-size:22pt;
+	}
+	.header-hr{
+		width:85%;
+		display:block;
+		margin:1rem auto;
+	}
+	.header p{
+		font-size:12pt;
+		line-height:1.6;
+	}
+	.description-container{
+		width:85%;
+		margin:0 auto;
+	}
+	.nav{
+		width:85%;
+	}
+	.nav li{
+		margin:0 0 0.8rem 0;
+		padding:0;
+	}
+	.header-background{
+		max-height:16rem;
+	}
+
+	/*Maincontent (C420)*/
+	.post-container{
+		width:85%;
+	}
+}
+/*End 47rem width and up - tablets, emphasis portrait*/
+
+
+/*47rem width and up - tablets, landscape-only*/
+@media screen and (min-width:47rem) and (orientation:landscape){
+
+	/*Post-specific stylings (D100)*/
+
+	/*Photo (D120)*/
+	.photoset-photos .tile{
+		width:50%;
+		height:26vw;
+	}
+
+	/*Video (D180)*/
+	#youtube_iframe, .tumblr_video_container iframe, .video-player iframe{
+		font-size:4.0625vw;
+	}
+
+	/*Next/previous button css (D190)*/
+	.prev-next-pg{
+		width:65%;
+	}
+
+	/*MAIN CSS (D400)*/
+
+	/*Header (D410)*/
+	.header{
+		padding:2rem 1rem 1rem 1rem;
+	}
+	.avatar-img{
+		max-width:12vw;
+		margin-bottom:0.6rem;
+	}
+	.header h1{
+		margin-bottom:0.6rem;
+		font-size:22pt;
+	}
+	.header p{
+		font-size:12pt;
+		line-height:1.6;
+	}
+	.header-hr{
+		width:65%;
+	}
+	.description-container{
+		width:65%;
+		margin:0 auto;
+	}
+	.nav{
+		width:65%;
+	}
+
+	/*Maincontent (D420)*/
+	.post-container{
+		width:65%;
+	}
+}
+/*End 47rem width and up - tablets, landscape-only*/
+
+
+/*80rem and up - desktops, laptops large tablets*/
+@media screen and (min-width:80rem){
+
+	/*Post-specific stylings (E100)*/
+
+	/*Photo (E120)*/
+	.photoset-photos .tile{
+		width:50%;
+		height:14vw;
+	}
+
+	/*Video (E180)*/
+	#youtube_iframe, .tumblr_video_container iframe, .video-player iframe{
+		width:100%;
+		height:20.5vw;
+	}
+
+	/*Next/previous button css (E190)*/
+	.prev-next-pg{
+		width:60%;
+	}
+	.prev-next-pg svg:hover{
+		color:rgb(80,85,115);
+		fill:currentColor;
+
+		-webkit-transition: .15s ease-in-out;
+		-moz-transition: .15s ease-in-out;
+		-o-transition: .15s ease-in-out;
+		transition: .15s ease-in-out;
+	}
+
+	/*MAIN CSS (E400)*/
+
+	/*Header (E410)*/
+	.header{
+		padding:0;
+
+		float:left;
+		width:35%;
+		height:100%;
+		position:fixed;
+
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+
+		overflow:hidden;
+	}
+	.header-content-container{
+		position:absolute;
+		top:0;
+		margin-top:11vw;
+	}
+	.avatar-img{
+		display:block;
+		margin:0 auto;
+		max-width:24%;
+		margin-bottom:0.8rem;
+	}
+	.header h1{
+		text-align:center;
+		margin-bottom:0.8rem;
+		font-size:22pt;
+	}
+	.header p{
+		font-size:11pt;
+		line-height:1.56;
+		margin-bottom:0;
+	}
+	.header-hr{
+		width:75%;
+	}
+	.description-container{
+		width:75%;
+		margin:0 auto;
+	}
+	.header-background{
+		width:105%;
+		max-height:17vw;
+	}
+	.header-img-space{
+        height:0;
+    }
+	.nav{
+		width:75%;
+		margin:0 auto;
+		display:flex;
+		flex-direction:column;
+		flex-wrap:wrap;
+		margin-top:0.6rem;
+	}
+	.nav li{
+		list-style-type:none;
+		display:inline;
+		text-decoration:underline;
+		box-shadow:inset 2px 0px white;
+		font-weight:bold;
+		padding:0.2rem 0.5rem 0.2rem 0.5rem;
+	}
+
+	/*Maincontent (posts and such) (E420)*/
+	.maincontent{
+		color:rgb(44,44,44);
+		padding:0;
+
+		float:right;
+		width:60%;
+		margin-right:5%;
+	}
+	.post-container{
+		margin:2rem auto 2rem auto;
+		width:60%;
+	}
+
+	/*Search CSS (E430)*/
+	form#search{
+		width:75%;
+	}
+	form#search input[type="search"]{
+		margin:0;
+	}
+
+}
+/*End 80rem and up - desktops, laptops large tablets*/
+
+
+/*For small laptop screens, so nothing in the header overflows downward*/
+/*(SMOL-100)*/
+@media screen and (min-width:80rem) and (max-height:57rem){
+	.avatar-img{
+		max-width:21%;
+	}
+	.description-container .description{
+		font-size:11pt;
+	}
+	.header h1{
+		font-size:20pt;
+	}
+	form#search input[type="search"]{
+		height:1.6rem;
+		width:10rem;
+		font-size:11pt;
+	}
+	.nav li{
+		padding:0 0.4rem 0.1rem 0.5rem;
+	}
+	.nav li a{
+		font-size:11pt;
+	}
+
+	.header-content-container{
+		margin-top:7vw;
+	}
+	.header-background{
+		max-height:14vw;
+	}
+}
