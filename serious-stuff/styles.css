@@ -541,7 +541,7 @@ Explanation: http://zurb.com/word/mobile-first
     }
     .header-img-space{
         display:block;
-        height:5rem;
+        height:28vw;
     }
 
 	/*Maincontent (A420)*/
@@ -654,10 +654,8 @@ Explanation: http://zurb.com/word/mobile-first
 		margin:0 0 0.8rem 0;
 	}
 	.header-background{
-		max-height:13rem;
-	}
-	.header-background-space{
 		display:none;
+		height:1055px;
 	}
 	.header-img-space{
         display:block;
@@ -732,10 +730,11 @@ Explanation: http://zurb.com/word/mobile-first
 		padding:0;
 	}
 	.header-background{
+		display:block;
 		max-height:1055px;
 	}
 	.header-img-space{
-		height:18.5rem;
+		height:39vw;
 		display:block;
 	}
 
@@ -796,12 +795,12 @@ Explanation: http://zurb.com/word/mobile-first
 	.nav{
 		width:65%;
 	}
-	.header-img-space{
+	.header-background{
 		display:none;
 	}
 	.header-img-space{
-        display:none;
-    }
+		display:none;
+	}
 
 	/*Maincontent (D420)*/
 	.post-container{
@@ -888,8 +887,9 @@ Explanation: http://zurb.com/word/mobile-first
 		margin:0 auto;
 	}
 	.header-background{
-		width:105%;
-		max-height:17vw;
+		height:1055px;
+		margin:0;
+		display:block;
 	}
 	.header-img-space{
         height:0;
@@ -965,6 +965,7 @@ Explanation: http://zurb.com/word/mobile-first
 		margin-top:11vw;
 	}
 	.header-background{
-		max-height:14vw;
+		height:1055px;
+		display:block;
 	}
 }
