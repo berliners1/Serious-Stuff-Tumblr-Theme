@@ -30,7 +30,7 @@ Explanation: http://zurb.com/word/mobile-first
 		(A430) Search CSS
 
 --0rem width and up - mobile, landscape-only--
-	(B200) Post-specific stylings
+	(B100) Post-specific stylings
 		(B120) Text
 		(B180) Video
 		(B190) Misc/endmatter
@@ -39,7 +39,7 @@ Explanation: http://zurb.com/word/mobile-first
 		(B420) Maincontent
 
 --47rem width and up - tablets, emphasis portrait--
-	(C200) Post-specific stylings
+	(C100) Post-specific stylings
 		(C120) Text
 		(C180) Video
 		(C190) Misc/endmatter
@@ -48,7 +48,7 @@ Explanation: http://zurb.com/word/mobile-first
 		(C420) Maincontent
 
 --47rem width and up - tablets, landscape-only--
-	(D200) Post-specific stylings
+	(D100) Post-specific stylings
 		(D120) Text
 		(D180) Video
 		(D190) Misc/endmatter
@@ -57,7 +57,7 @@ Explanation: http://zurb.com/word/mobile-first
 		(D420) Maincontent
 
 --80rem width and up - desktops, laptops, large tablets--
-	(E200) Post-specific stylings
+	(E100) Post-specific stylings
 		(E120) Text
 		(E180) Video
 		(E190) Misc/endmatter
