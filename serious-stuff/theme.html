@@ -39,10 +39,50 @@
     
     <!-- Search -->
     <meta name="if:Enable Search" content="0"/>
+    
+    
+    <!-- Other -->
+    <meta name="if:Photoset row of one" content="0" />
   {/block:Hidden}
   
   
   <style type="text/css">
+  
+  {block:IfPhotosetrowofone}
+    .photoset-photos .tile:nth-child(odd){
+      float:none !important;
+    }
+    
+    .photoset-photos .tile{
+      width:100% !important;
+    }
+    
+    @media screen and (min-width:0rem){
+      .photoset-photos .tile{
+        height:60vw;
+      }
+    }
+    @media screen and (min-width:0rem) and (orientation:landscape){
+      .photoset-photos .tile{
+        height:40vw;
+      }
+    }
+    @media screen and (min-width:47rem){
+      .photoset-photos .tile{
+        height:50vw;
+      }
+    }
+    @media screen and (min-width:47rem) and (orientation:landscape){
+      .photoset-photos .tile{
+        height:35vw;
+      }
+    }
+    @media screen and (min-width:80rem){
+      .photoset-photos .tile{
+        height:20vw;
+      }
+    }
+  {/block:IfPhotosetrowofone}
   
   /*--Tumblr Default Fonts--*/
   {block:IfDefaultHeaderFont}
