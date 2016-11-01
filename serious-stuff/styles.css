@@ -156,6 +156,7 @@ Explanation: http://zurb.com/word/mobile-first
 	}
 	.photo figcaption.caption{
 		margin-top:0.4rem;
+		display:inline-block;
 	}
 
 	.photoset-photos{
