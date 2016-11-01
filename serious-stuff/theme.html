@@ -36,6 +36,7 @@
     <meta name="color:Header Text Color" content="rgb(244,244,244)"/> <!-- Header text -->
     <meta name="color:Avatar Border Color" content="rgb(255,255,255)"/> <!-- Avatar border -->
     <meta name="if:Disable Border" content="0">
+    <meta name="if:Disable Post Colored Bar" content="0">
     
     <!-- Search -->
     <meta name="if:Enable Search" content="0"/>
@@ -147,6 +148,13 @@
         border:none !important;
     }
   {/block:IfDisableBorder}
+  
+  {block:IfDisablePostColoredBar}
+    .post-container{
+        border-top:none;
+    }
+  {/block:IfDisablePostColoredBar}
+  
   
   {CustomCSS}
   </style>
